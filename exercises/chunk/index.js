@@ -28,25 +28,27 @@
 //   return chunked;
 // }
 
+// function chunk(array, size) {
+//   return array.reduce(
+//     (acc, el) => {
+//       let lastIndex = acc.length - 1;
+//       if (acc[lastIndex].length === size) {
+//         acc.push([el]);
+//       } else {
+//         acc[lastIndex].push(el);
+//       }
+
+//       return acc;
+//     },
+//     [[]],
+//   );
+// }
+
 function chunk(array, size) {
-  let chunked = array.reduce(
-    (acc, el) => {
-      let lastSubArray = acc[acc.length - 1];
-
-      if (lastSubArray.length < size) {
-        lastSubArray.push(el);
-      }
-
-      if (lastSubArray.length === size) {
-        acc.push([]);
-      }
-
-      return acc;
-    },
-    [[]],
-  );
-
-  console.log({ chunked });
+  let chunked = [];
+  for(let i = 0; i < array.length; i += size) {
+    chunked.push(array.slice(i, i + size));
+  }
   return chunked;
 }
 
