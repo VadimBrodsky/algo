@@ -34,23 +34,49 @@
 //   }
 // }
 
+// function pyramid(n) {
+//   let width = n + n - 1;
+//   let center = Math.floor(width / 2);
+
+//   for (let row = 0; row < n; row++) {
+//     let str = '';
+
+//     for (let col = 0; col < width; col++) {
+//       if (center - row <= col && center + row >= col) {
+//         str += '#';
+//       } else {
+//         str += ' ';
+//       }
+//     }
+
+//     console.log(str);
+//   }
+// }
+
 function pyramid(n) {
-  let width = n + n - 1;
+  let width = n * 2 - 1;
   let center = Math.floor(width / 2);
 
-  for (let row = 0; row < n; row++) {
-    let str = '';
-
-    for (let col = 0; col < width; col++) {
-      if (center - row <= col && center + row >= col) {
-        str += '#';
-      } else {
-        str += ' ';
-      }
+  function recurse(n, row = 0, col = 0, str = '') {
+    if (row === n) {
+      return;
     }
 
-    console.log(str);
+    if (width === str.length) {
+      console.log(str);
+      return recurse(n, row + 1);
+    }
+
+    if (center - row <= col && center + row >= col) {
+      str += '#';
+    } else {
+      str += ' ';
+    }
+
+    recurse(n, row, col + 1, str);
   }
+
+  recurse(n, 0, 0, '');
 }
 
 module.exports = pyramid;
