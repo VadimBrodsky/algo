@@ -55,6 +55,4 @@ function steps(n, row = 0, stair = '') {
   steps(n, row, stair);
 }
 
-steps(5)
-
 module.exports = steps;
