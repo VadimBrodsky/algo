@@ -16,76 +16,70 @@
 //     [10,  9,  8, 7]]
 
 function matrix(n) {
-  function createMatrix(n) {
-    let array = [];
-
-    for (let i = 0; i < n; i++) {
-      array.push([]);
-      for (let j = 0; j < n; j++) {
-        array[i].push('__');
-      }
-    }
-
-    return array;
-  }
-
-  let counter = 1;
   let matrix = createMatrix(n);
-
-  let startCol;
-  let endCol;
-  let startRow;
-  let endRow;
-
+  let counter = 1;
   let topCounter = 0;
   let bottomCounter = 0;
 
-  for (i = 0; i < 4; i++) {
+  iterate(0, n, (i) => {
     if (i % 2 === 0) {
-      startRow = topCounter;
-      endRow = n - topCounter;
-      startCol = topCounter;
-      endCol = n - topCounter;
+      let startRow = topCounter;
+      let endRow = n - topCounter;
+      let startCol = topCounter;
+      let endCol = n - topCounter;
 
-      for (let row = startRow; row < endRow; row++) {
-        for (let col = startCol; col < endCol; col++) {
-          matrix[row][col] = counter.toString().padStart(2, ' ');
+      iterate(startRow, endRow, (row) => {
+        iterate(startCol, endCol, (col) => {
+          matrix[row][col] = counter;
           counter++;
-        }
+        });
         startCol = n - 1 - topCounter;
-      }
+      });
 
       topCounter++;
     } else {
-      startRow = n - bottomCounter;
-      endRow = bottomCounter - 1;
-      startCol = n - bottomCounter - 1;
-      endCol = bottomCounter - 1;
+      let startRow = n - 1 - bottomCounter;
+      let endRow = bottomCounter;
+      let startCol = n - topCounter - 1;
+      let endCol = bottomCounter;
 
-      for (let row = startRow; row > endRow; row--) {
+      iterate(startRow, endRow, (row) => {
         for (let col = startCol; col >= endCol; col--) {
-          matrix[row][col] = counter.toString().padStart(2, ' ');
+          matrix[row][col] = counter;
           counter++;
         }
-        startCol = i -  bottomCounter;
-      }
-    }
+        startCol = bottomCounter;
+      });
 
-    bottomCounter++;
-  }
+      bottomCounter++;
+    }
+  });
 
   return matrix;
 }
 
-function printMatrix(array) {
-  console.log(JSON.stringify(array).replace(/\],/g, '],\n'));
-  console.log('');
+function createMatrix(n) {
+  let array = [];
+
+  iterate(0, n, (i) => {
+    array.push([]);
+    iterate(0, n, (j) => array[i].push('__'));
+  });
+
+  return array;
 }
 
-printMatrix(matrix(2));
-printMatrix(matrix(3));
-printMatrix(matrix(4));
-printMatrix(matrix(5));
-printMatrix(matrix(6));
+function iterate(from, to, cb, inclusive = false) {
+  if (from === to) {
+    return;
+  }
+
+  cb(from);
+
+  let step = from < to ? from + 1 : from - 1;
+  iterate(step, to, cb);
+}
+
+// console.log(matrix(5));
 
 module.exports = matrix;
