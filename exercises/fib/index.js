@@ -23,6 +23,7 @@
 //   return current;
 // }
 
+// recursive O(2^n)
 function fib(n) {
   if (n < 2) {
     return n;
@@ -31,4 +32,19 @@ function fib(n) {
   return fib(n - 1) + fib(n - 2);
 }
 
-module.exports = fib;
+function memoize(fn) {
+  const cache = {};
+
+  return function(...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+
+    cache[args] = fn(...args);
+    return cache[args];
+  }
+}
+
+fib = memoize(fib);
+
+module.exports = memoize(fib);
