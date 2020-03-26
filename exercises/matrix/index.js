@@ -22,37 +22,44 @@ function matrix(n) {
   let bottomCounter = 0;
 
   iterate(0, n, (i) => {
-    if (i % 2 === 0) {
-      let startRow = topCounter;
-      let endRow = n - topCounter;
-      let startCol = topCounter;
-      let endCol = n - topCounter;
+    let topRow = i % 2 === 0;
 
-      iterate(startRow, endRow, (row) => {
-        iterate(startCol, endCol, (col) => {
+    if (topRow) {
+      let bounds = {
+        rowStart: topCounter,
+        rowEnd: n - topCounter,
+        colStart: topCounter,
+        colEnd: n - topCounter,
+      };
+
+      iterate(bounds.rowStart, bounds.rowEnd, (row) => {
+        iterate(bounds.colStart, bounds.colEnd, (col) => {
           matrix[row][col] = counter;
           counter++;
         });
-        startCol = n - 1 - topCounter;
+        bounds.colStart = n - 1 - topCounter;
       });
 
       topCounter++;
-    } else {
-      let startRow = n - 1 - bottomCounter;
-      let endRow = bottomCounter;
-      let startCol = n - topCounter - 1;
-      let endCol = bottomCounter;
-
-      iterate(startRow, endRow, (row) => {
-        for (let col = startCol; col >= endCol; col--) {
-          matrix[row][col] = counter;
-          counter++;
-        }
-        startCol = bottomCounter;
-      });
-
-      bottomCounter++;
+      return;
     }
+
+    let bounds = {
+      rowStart: n - bottomCounter - 1,
+      rowEnd: bottomCounter,
+      colStart: n - topCounter - 1,
+      colEnd: bottomCounter - 1,
+    };
+
+    iterate(bounds.rowStart, bounds.rowEnd, (row) => {
+      iterate(bounds.colStart, bounds.colEnd, (col) => {
+        matrix[row][col] = counter;
+        counter++;
+      });
+      bounds.colStart = bottomCounter;
+    });
+
+    bottomCounter++;
   });
 
   return matrix;
@@ -79,7 +86,5 @@ function iterate(from, to, cb, inclusive = false) {
   let step = from < to ? from + 1 : from - 1;
   iterate(step, to, cb);
 }
-
-// console.log(matrix(5));
 
 module.exports = matrix;
