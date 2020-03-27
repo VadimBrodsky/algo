@@ -15,13 +15,7 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    let node = new Node(data);
-
-    if (this.head) {
-      node.next = this.head;
-    }
-
-    this.head = node;
+    this.head = new Node(data, this.head);
   }
 
   size() {
@@ -55,6 +49,10 @@ class LinkedList {
   }
 
   removeFirst() {
+    if (!this.head) {
+      return;
+    }
+
     this.head = this.head.next;
   }
 
