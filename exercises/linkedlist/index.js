@@ -86,16 +86,16 @@ class LinkedList {
     let currentIndex = 0;
     let currentNode = this.head;
 
-    if (index > this.size() - 1) {
-      return null;
-    }
+    while (currentNode) {
+      if (currentIndex === index) {
+        return currentNode;
+      }
 
-    while (index > currentIndex) {
       currentNode = currentNode.next;
       currentIndex++;
     }
 
-    return currentNode;
+    return null;
   }
 
   removeAt(index) {
@@ -125,11 +125,9 @@ class LinkedList {
     }
 
     let preNode = this.getAt(index - 1);
-    let postNode = this.getAt(index);
-    let node = new Node(data);
+    let node = new Node(data, this.getAt(index));
 
     preNode.next = node;
-    node.next = postNode;
   }
 
   forEach(fn) {
