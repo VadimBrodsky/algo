@@ -1,7 +1,6 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/727/
 
-let assert = require('assert');
-let test = (cb) => cb();
+let { test } = require('../../_utils/test');
 
 /**
  * @param {number[]} nums
@@ -33,20 +32,20 @@ var removeDuplicates = function(nums) {
   return nums.length;
 };
 
-test(() => {
+test(({ deepEqual }) => {
   let arr = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
   let length = removeDuplicates(arr);
-  assert.deepEqual(arr.slice(0, length), [0, 1, 2, 3, 4]);
+  deepEqual(arr.slice(0, length), [0, 1, 2, 3, 4]);
 });
 
-test(() => {
+test(({ deepEqual }) => {
   let arr = [1,1,1,2];
   let length = removeDuplicates(arr);
-  assert.deepEqual(arr.slice(0, length), [1, 2]);
+  deepEqual(arr.slice(0, length), [1, 2]);
 });
 
-test(() => {
+test(({ deepEqual }) => {
   let arr = [0, 0, 0, 0, 0, 1, 2, 2, 3, 3, 4, 4];
   let length = removeDuplicates(arr);
-  assert.deepEqual(arr.slice(0, length), [0, 1, 2, 3, 4]);
+  deepEqual(arr.slice(0, length), [0, 1, 2, 3, 4]);
 });
