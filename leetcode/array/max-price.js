@@ -1,12 +1,11 @@
-// https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/564/
-
 let { test } = require('../../_utils/test');
 let _ = require('lodash');
 
 /**
- *  * @param {number[]} prices
- *   * @return {number}
- *    */
+ * https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/564/
+ *  @param {number[]} prices
+ *  @return {number}
+ */
 
 var maxProfit = function(prices) {
   if (prices.length < 2) {
