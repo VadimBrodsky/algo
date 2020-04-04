@@ -1,7 +1,7 @@
 let { test } = require('../../_utils/test');
 
-// https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/884/
 /**
+ * https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/884/
  * @param {string} str
  * @return {number}
  */
