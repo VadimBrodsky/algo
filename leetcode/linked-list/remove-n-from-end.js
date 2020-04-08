@@ -18,17 +18,21 @@ let { Node } = require('./_node.js');
 var removeNthFromEnd = function(head, n) {
   let slow = head;
   let fast = head;
+  let dropHead = false;
 
   for (i = 0; i < n; i++) {
     if (fast.next) {
       fast = fast.next;
     } else {
+      slow = slow.next;
+      dropHead = true;
       break;
     }
   }
 
-  if (slow === fast) {
-    return null;
+  if (dropHead) {
+    head = slow;
+    return head;
   }
 
   while (fast.next) {
@@ -48,6 +52,18 @@ test((assert) => {
 
 test((assert) => {
   let head = new Node(1, new Node(2));
-  let newhead = removeNthFromEnd(head, 2)
+  let newhead = removeNthFromEnd(head, 2);
   assert.deepEqual(Node.toArray(newhead), [2]);
-})
+});
+
+test((assert) => {
+  let head = new Node(1, new Node(2));
+  let newhead = removeNthFromEnd(head, 1);
+  assert.deepEqual(Node.toArray(newhead), [1]);
+});
+
+test((assert) => {
+  let head = new Node(1, new Node(2, new Node(3)));
+  let newhead = removeNthFromEnd(head, 3);
+  assert.deepEqual(Node.toArray(newhead), [2, 3]);
+});
