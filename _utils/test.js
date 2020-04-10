@@ -14,6 +14,7 @@ let it = (name, cb) => {
     console.log('FAIL:');
     console.log(e);
   }
+  console.log();
 };
 it.skip = noop;
 
