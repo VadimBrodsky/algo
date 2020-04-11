@@ -70,7 +70,7 @@ class DoublyLinkedList {
     } else {
       let count = 0;
       let currentNode = this.head;
-      while (count !== position) {
+      while (currentNode && count !== position) {
         currentNode = currentNode.next;
         count++;
       }
