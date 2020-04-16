@@ -1,5 +1,7 @@
 const { it } = require('../_utils/test.js');
 
+// Time O(N^2) worst case
+// Space O(1)
 let bubbleSort = (array) => {
   let swap = (array, idxA, idxB) => {
     let temp = array[idxA];
@@ -7,7 +9,7 @@ let bubbleSort = (array) => {
     array[idxB] = temp;
   };
 
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length - 1; i++) {
     for (let j = 0; j < array.length - i; j++) {
       if (array[j] > array[j + 1]) {
         swap(array, j, j + 1);
