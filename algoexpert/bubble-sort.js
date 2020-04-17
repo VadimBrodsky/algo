@@ -1,5 +1,9 @@
 const { it } = require('../_utils/test.js');
 
+// traverse from the beginning to the end
+// check pairs of numbers
+// if they out of order, swap them
+
 // Time O(N^2) worst case
 // Space O(1)
 let bubbleSort = (array) => {

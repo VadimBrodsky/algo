@@ -1,5 +1,12 @@
 const { it } = require('../_utils/test.js');
 
+// traverse the length of the array
+// compare the current and the previous numbers
+// if out of order swap them
+// travese to the beginning of the array
+// swapping as needed to find the right position
+// for the current number
+
 // Time O(N^2)
 // Space O(1)
 let insertionSort = (array) => {
