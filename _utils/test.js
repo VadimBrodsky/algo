@@ -18,7 +18,14 @@ let it = (name, cb) => {
 };
 it.skip = noop;
 
+let describe = (name, cb) => {
+  console.log(`SUITE: ${name}`);
+  cb();
+};
+describe.skip = noop;
+
 module.exports = {
   test,
   it,
+  describe,
 };
