@@ -1,13 +1,5 @@
 const { it, describe } = require('../_utils/test.js');
 
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
-  }
-}
-
 // Time O(n)
 // Space O(n) because of the array, otherwise O(d) where d is depth
 let traverseBSTInOrder = (tree) => {
@@ -57,6 +49,14 @@ let traverseBSTPostOrder = (tree) => {
 };
 
 describe('BST Traversal', () => {
+  class Node {
+    constructor(data) {
+      this.data = data;
+      this.left = null;
+      this.right = null;
+    }
+  }
+
   //       10
   //      /  \
   //     5   15
