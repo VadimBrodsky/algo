@@ -1,5 +1,6 @@
 const { it, describe } = require('../_utils/test.js');
 
+// dynamic programming
 // Time O(n)
 // Space O(n) because of the maxSums array
 let maxSubsetSumNoAdjacent = (array) => {

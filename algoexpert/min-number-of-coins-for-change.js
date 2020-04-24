@@ -1,5 +1,6 @@
 const { it, describe } = require('../_utils/test.js');
 
+// dynamic programming
 // Time O(nd), where d is the amount of coins
 // Space O(n)
 let minNumberOfCoinsForChange = (targetAmount, coins) => {

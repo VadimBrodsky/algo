@@ -1,5 +1,6 @@
 const { it, describe } = require('../_utils/test.js');
 
+// dynamic programming
 // Time O(nd), where d is the number of coin denominations
 // Space O(n)
 let numberOfWaysToMakeChange = (targetAmount, coins) => {
