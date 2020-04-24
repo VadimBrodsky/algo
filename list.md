@@ -11,7 +11,7 @@
 32 Balanced Brackets - stack, fairly simple
 33 Longest Palindromic Substring - symmetry check, even / odd palindrome, fairly straigtforward
 -> 34 Suffix Trie Construction - hashes, space time is interesting
-35 Four Number Sum
+36 Four Number Sum - nested array, and traversal before and after, confusing
 36 Subarray Sort
 37 Largest Range
 38 Max Path Sum In Binary
