@@ -5,12 +5,12 @@
 -> 26 Min Heap Construction - heap, using array
 27 Remove Kth Node From End - single linked list, two pointers
 -> 28 Permutations - arrays, factorial time, fairly challenging
-29 Powerset
-30 Search In Sorted Matrix
-31 Min Max Stack Construc
-32 Balanced Brackets
-33 Longest Palindromic Su
-34 Suffix Trie Construction
+29 Powerset - 2^n, arrays, iterative, recursive, straigtforward
+30 Search In Sorted Matrix - similar to binary search
+-> 31 Min Max Stack Construc - arrays, min / max is nifty, fairly simple
+32 Balanced Brackets - stack, fairly simple
+33 Longest Palindromic Substring - symmetry check, even / odd palindrome, fairly straigtforward
+-> 34 Suffix Trie Construction - hashes, space time is interesting
 35 Four Number Sum
 36 Subarray Sort
 37 Largest Range
