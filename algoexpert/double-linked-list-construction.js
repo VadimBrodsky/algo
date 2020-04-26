@@ -66,7 +66,7 @@ class DoublyLinkedList {
   // O(P) time, O(1) space
   insertAt(position, node) {
     if (position === 0) {
-      this.insertHead(node);
+      this.setHead(node);
     } else {
       let count = 0;
       let currentNode = this.head;
@@ -144,6 +144,11 @@ class DoublyLinkedList {
     node.next = null;
     node.prev = null;
   }
+}
+
+module.exports = {
+  Node,
+  DoublyLinkedList,
 }
 
 function createDLL(arrayOfValues) {
